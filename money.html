@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор заработка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: url('https://umbphotos.ag/images/375b18fa3ffcc616179b8cf6ed4732c6.webp') no-repeat center center fixed;
+            background-size: cover;
+        }
+        h1 {
+            margin: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .banner {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            text-align: center;
+        }
+        .slider-container {
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 15px 0;
+            background: transparent;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 8px;
+            background: #ccc;
+            border-radius: 4px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background: url('https://umbphotos.ag/images/1328bca71a4a1f545b047947c404b2c2.png') no-repeat center;
+            background-size: contain;
+            width: 40px;
+            height: 40px;
+            margin-top: -16px; /* Центровка изображения относительно шкалы */
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+        }
+        .italic-text {
+            margin-top: 15px;
+            text-align: center;
+            font-style: italic;
+            color: #fff;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #DAA520;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #696969	;
+        }
+    </style>
+</head>
+<body>
+    <img class="banner" src="https://umbphotos.ag/images/ddec2c9e7d91166b267ea75db3044a71.jpg" alt="Баннер">
+    <h1>Ваш  возможный  зароботок:</h1>
+    <div class="slider-container">
+        <label>Количество сделанных  кладов в день (0–100):</label>
+        <input type="range" id="boxes" min="0" max="100" value="50" oninput="updateCalculation()">
+        <div>Значение: <span id="boxesValue">50</span></div>
+        <label>Количество рабочих дней в месяц (1–31):</label>
+        <input type="range" id="days" min="1" max="31" value="15" oninput="updateCalculation()">
+        <div>Значение: <span id="daysValue">15</span></div>
+    </div>
+    <div class="result">
+        <p>Заработок за неделю: <span id="weeklyEarnings">0</span> руб.</p>
+        <p>Заработок за месяц: <span id="monthlyEarnings">0</span> руб.</p>
+    </div>
+    <p class="italic-text">(Расчет зароботной платы, при условии выполнения +130 кладов в неделю)</p>
+    <div class="button-container">
+        <a href="https://t.me/bestwork55" class="button">Менеджер по трудоустройству</a>
+        <a href="https://t.me/m/MH3FdfpEOWE0" class="button">Оператор КЕТТ</a>
+    </div>
+
+    <script>
+        function updateCalculation() {
+            const boxesPerDay = parseInt(document.getElementById('boxes').value);
+            const workingDays = parseInt(document.getElementById('days').value);
+            document.getElementById('boxesValue').textContent = boxesPerDay;
+            document.getElementById('daysValue').textContent = workingDays;
+
+            const boxesPerWeek = boxesPerDay * 7;
+            const boxesPerMonth = boxesPerDay * workingDays;
+
+            const ratePerBox = 600; // Фиксированная стоимость одной коробки
+            const weeklyEarnings = boxesPerWeek * ratePerBox;
+            const monthlyEarnings = boxesPerMonth * ratePerBox;
+
+            document.getElementById('weeklyEarnings').textContent = weeklyEarnings;
+            document.getElementById('monthlyEarnings').textContent = monthlyEarnings;
+        }
+
+        updateCalculation();
+    </script>
+</body>
+</html>
